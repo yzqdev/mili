@@ -1,0 +1,16 @@
+*.log
+.idea
+*.swp
+
+#website/.nuxt
+golang123
+config.example.json
+node_modules
+npm-debug.log
+website/config/index.js
+website/mysqlscripts
+website-mobile/config/index.js
+review.md
+build.md
+build
+tmp

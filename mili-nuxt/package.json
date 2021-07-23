@@ -1,0 +1,29 @@
+{
+  "name": "golang123-pc",
+  "version": "0.1.1",
+  "description": "golang123 pc project",
+  "author": "shen100 <liushen_shen@163.com>",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "analyse": "nuxt build -a",
+    "g": "nuxt generate",
+    "lint": "prettier --write **/*.{vue,js}"
+  },
+  "dependencies": {
+    "axios": "0.21.1",
+    "iview": "3.5.4",
+    "js-cookie": "^2.2.1",
+    "moment": "2.29.1",
+    "mysql": "^2.18.1",
+    "js-cookie": "^2.2.1",
+    "nuxt": "2.15.7",
+    "prettier": "^2.3.1",
+    "trim-html": "^0.1.9"
+  },
+  "devDependencies": {
+    "@nuxt/types": "~2.15.0"
+  }
+}

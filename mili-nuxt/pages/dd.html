@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+</head>
+<body>
+<button onclick="submit()">
+    提交
+</button>
+<script>
+
+
+    function submit(){
+        axios.post('http://localhost:8023/api/signin',{a:'aaa'}).then((res ) => {
+          console.log(res)
+        })
+    }
+</script>
+</body>
+</html>
