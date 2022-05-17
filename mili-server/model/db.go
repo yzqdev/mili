@@ -2,12 +2,12 @@ package model
 
 import (
 	"fmt"
+	"github.com/garyburd/redigo/redis"
+	"gorm.io/driver/postgres"
+	"gorm.io/gorm"
+	"mili/config"
 	"os"
 	"time"
-
-	"github.com/garyburd/redigo/redis"
-	"github.com/jinzhu/gorm"
-	"mili/config"
 )
 
 // DB 数据库连接
@@ -17,16 +17,16 @@ var DB *gorm.DB
 var RedisPool *redis.Pool
 
 func initDB() {
-	db, err := gorm.Open(config.DBConfig.Dialect, config.DBConfig.URL)
+	db, err := gorm.Open(postgres.Open(config.DBConfig.URL), &gorm.Config{})
 	if err != nil {
 		fmt.Println(err.Error())
 		os.Exit(-1)
 	}
-	if config.ServerConfig.Env == DevelopmentMode {
-		db.LogMode(true)
-	}
-	db.DB().SetMaxIdleConns(config.DBConfig.MaxIdleConns)
-	db.DB().SetMaxOpenConns(config.DBConfig.MaxOpenConns)
+	//if config.ServerConfig.Env == DevelopmentMode {
+	//	db.LogMode(true)
+	//}
+	//db.DB().SetMaxIdleConns(config.DBConfig.MaxIdleConns)
+	//db.DB().SetMaxOpenConns(config.DBConfig.MaxOpenConns)
 	DB = db
 }
 

@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 
 	"github.com/gin-gonic/gin"
 	"mili/controller/common"
@@ -41,7 +41,7 @@ func Unread(c *gin.Context) {
 		SendErrJSON("error", c)
 		return
 	}
-	var count int
+	var count int64
 	if err := model.DB.Model(&model.Message{}).Where("readed = ? AND to_user_id = ?", 0, user.ID).Count(&count).Error; err != nil {
 		SendErrJSON("error", c)
 		return

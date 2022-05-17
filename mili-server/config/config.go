@@ -51,8 +51,9 @@ var DBConfig dBConfig
 
 func initDB() {
 	utils.SetStructByJSON(&DBConfig, jsonData["database"].(map[string]interface{}))
-	url := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=%s&parseTime=True&loc=Local",
-		DBConfig.User, DBConfig.Password, DBConfig.Host, DBConfig.Port, DBConfig.Database, DBConfig.Charset)
+	url := "host=localhost user=postgres password=123456 dbname=golang123 port=5432 sslmode=disable TimeZone=Asia/Shanghai"
+	//url := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=%s&parseTime=True&loc=Local",
+	//DBConfig.User, DBConfig.Password, DBConfig.Host, DBConfig.Port, DBConfig.Database, DBConfig.Charset)
 	DBConfig.URL = url
 }
 

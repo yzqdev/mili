@@ -4,8 +4,8 @@ import (
 	"errors"
 	"fmt"
 
-	jwt "github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
+	jwt "github.com/golang-jwt/jwt"
 	"mili/config"
 	"mili/controller/common"
 	"mili/model"

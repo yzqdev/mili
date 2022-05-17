@@ -10,7 +10,7 @@ import (
 	"unicode/utf8"
 
 	"github.com/gin-gonic/gin"
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 	"mili/controller/common"
 	"mili/model"
 	"mili/utils"
@@ -68,7 +68,7 @@ func List(c *gin.Context) {
 
 	for i := 0; i < len(votes); i++ {
 		if err := model.DB.Model(&votes[i]).Related(&votes[i].User, "users").Error; err != nil {
-			fmt.Println(err.Error())
+			fmt.Println(err)
 			SendErrJSON("error", c)
 			return
 		}
