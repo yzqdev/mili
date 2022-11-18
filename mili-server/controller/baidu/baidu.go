@@ -3,7 +3,7 @@ package baidu
 import (
 	"bytes"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"strconv"
 	"strings"
@@ -29,7 +29,7 @@ func postToBaidu(url string, data []byte) ([]byte, error) {
 		return []byte(""), err
 	}
 	defer resp.Body.Close()
-	b, err := ioutil.ReadAll(resp.Body)
+	b, err := io.ReadAll(resp.Body)
 	if err != nil {
 		fmt.Println(err.Error(), url)
 	}

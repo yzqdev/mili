@@ -83,7 +83,7 @@ func queryList(c *gin.Context, isBackend bool) {
 	}
 
 	type TotalCountResult struct {
-		TotalCount int
+		TotalCount int64
 	}
 
 	var totalCountResult TotalCountResult
@@ -200,7 +200,7 @@ func queryList(c *gin.Context, isBackend bool) {
 
 	for i := 0; i < len(articles); i++ {
 		if err := model.DB.Model(&articles[i]).Related(&articles[i].User, "users").Error; err != nil {
-			fmt.Println(err.Error())
+			fmt.Println(err)
 			SendErrJSON("error", c)
 			return
 		}
@@ -329,7 +329,7 @@ func UserArticleList(c *gin.Context) {
 		return
 	}
 
-	totalCount := 0
+	var totalCount int64 = 0
 	if err := model.DB.Model(&model.Article{}).Where("user_id = ? AND (status = 1 OR status = 2)", user.ID).Count(&totalCount).Error; err != nil {
 		fmt.Println(err.Error())
 		SendErrJSON("error", c)

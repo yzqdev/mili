@@ -506,7 +506,7 @@ func UserCommentList(c *gin.Context) {
 			data["voteName"] = vote.Name
 		}
 
-		if err := model.DB.Model(&comments[i]).Related(&comments[i].User, "users").Error; err != nil {
+		if err := model.DB.Model(&comments[i]).con(&comments[i].User, "users").Error; err != nil {
 			fmt.Println(err.Error())
 			SendErrJSON("error", c)
 			return

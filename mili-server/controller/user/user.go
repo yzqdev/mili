@@ -682,7 +682,7 @@ func InfoDetail(c *gin.Context) {
 		return
 	}
 
-	if err := model.DB.Model(&user).Related(&user.Schools).Error; err != nil {
+	if err := model.DB.Model(&user).Association(&user.Schools).Error; err != nil {
 		SendErrJSON("error", c)
 		return
 	}
